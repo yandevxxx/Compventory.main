@@ -222,26 +222,28 @@ public class AdminCheckingMember extends javax.swing.JFrame {
 
     private void updateSelectedUser() {
         int selectedRow = jTable1.getSelectedRow();
-        
+
         if (selectedRow == -1) {
-            JOptionPane.showMessageDialog(this, "Please select an Users from the table.");
+            JOptionPane.showMessageDialog(this, "Please select a user from the table.");
             return;
         }
 
         String currentUsername = jTable1.getValueAt(selectedRow, 0).toString();
-        String currentRole = jTable1.getValueAt(selectedRow, 1).toString();    
+        String currentRole = jTable1.getValueAt(selectedRow, 1).toString();
+        String currentGender = jTable1.getValueAt(selectedRow, 2).toString();
 
-        
         if (currentUsername.equalsIgnoreCase(name)) {
             JOptionPane.showMessageDialog(this, "You are not allowed to edit your own account.");
             return;
         }
 
         String[] roles = {"user", "admin"};
+        String[] genders = {"Male", "Female"};
+
         String newRole = (String) JOptionPane.showInputDialog(
                 this,
-                "Ubah Role:",
-                "Pilih Role",
+                "Change Role:",
+                "Edit Role",
                 JOptionPane.QUESTION_MESSAGE,
                 null,
                 roles,
@@ -250,26 +252,40 @@ public class AdminCheckingMember extends javax.swing.JFrame {
 
         if (newRole == null) return;
 
+        String newGender = (String) JOptionPane.showInputDialog(
+                this,
+                "Change Gender:",
+                "Edit Gender",
+                JOptionPane.QUESTION_MESSAGE,
+                null,
+                genders,
+                currentGender
+        );
+
+        if (newGender == null) return;
+
         try (Connection conn = DBConnectionService.getConnection();
              PreparedStatement stmt = conn.prepareStatement(
-                     "UPDATE akun SET role = ? WHERE username = ?")) {
+                     "UPDATE akun SET role = ?, gender = ? WHERE username = ?")) {
 
             stmt.setString(1, newRole);
-            stmt.setString(2, currentUsername);
+            stmt.setString(2, newGender);
+            stmt.setString(3, currentUsername);
 
             int affected = stmt.executeUpdate();
 
             if (affected > 0) {
-                JOptionPane.showMessageDialog(this, "Users Updated Succesfully.");
-                showTableListMember(conn); 
+                JOptionPane.showMessageDialog(this, "User updated successfully.");
+                showTableListMember(conn);
             } else {
-                JOptionPane.showMessageDialog(this, "Users Updated Failed.");
+                JOptionPane.showMessageDialog(this, "User update failed.");
             }
 
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(this, "Failed To Updated Users: " + ex.getMessage());
+            JOptionPane.showMessageDialog(this, "Failed to update user: " + ex.getMessage());
         }
     }
+
 
     private void deleteSelectedUser() {
         int selectedRow = jTable1.getSelectedRow();
