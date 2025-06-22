@@ -42,13 +42,13 @@ public class AdminCheckingMember extends javax.swing.JFrame {
         jTable1.setBackground(new java.awt.Color(245, 245, 245));
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null}
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
             },
             new String [] {
-                "Username", "Role", "Registration Time"
+                "Username", "Role", "Gender", "Register Date"
             }
         ));
         jScrollPane1.setViewportView(jTable1);
