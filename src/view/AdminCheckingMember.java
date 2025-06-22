@@ -329,6 +329,7 @@ public class AdminCheckingMember extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "Error while deleting account: " + ex.getMessage());
         }
     }
+
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton backBtn;
