@@ -1,7 +1,7 @@
 package repository;
 
 public interface AkunRepository {
-    boolean register(String username, String password, String role);
+    boolean register(String username, String password, String role, String gender);
     
     boolean login(String username, String password);
     

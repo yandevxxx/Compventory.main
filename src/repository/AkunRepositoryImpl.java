@@ -13,19 +13,24 @@ public class AkunRepositoryImpl implements AkunRepository {
     public static final String ROLE_USER = "user";
 
     @Override
-    public boolean register(String username, String password, String role) {
-        String query = "INSERT INTO akun (username, password, role) VALUES (?, ?, ?)";
-        try (Connection conn = DBConnectionService.getConnection(); PreparedStatement stmt = conn.prepareStatement(query)) {
+    public boolean register(String username, String password, String role, String gender) {
+        String query = "INSERT INTO akun (username, password, role, gender) VALUES (?, ?, ?, ?)";
+        try (Connection conn = DBConnectionService.getConnection();
+             PreparedStatement stmt = conn.prepareStatement(query)) {
+
             stmt.setString(1, username);
             stmt.setString(2, hashPassword(password));
             stmt.setString(3, role);
+            stmt.setString(4, gender);
+
             int affected = stmt.executeUpdate();
             return affected > 0;
         } catch (SQLException e) {
-            showMessageDialog(null, e.getMessage(), "Registeration", ERROR_MESSAGE);
+            showMessageDialog(null, e.getMessage(), "Registration", ERROR_MESSAGE);
             return false;
         }
     }
+
 
     public boolean isUsernameTaken(String username) {
         String query = "SELECT COUNT(*) FROM akun WHERE username = ?";
