@@ -7,7 +7,17 @@ import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
+/**
+ *
+ * @author Zildjian XTO
+ */
 public class KeuanganServiceImpl implements KeuanganService{
+
+    /**
+     *
+     * @param conn
+     * @param table
+     */
     @Override
     public void ShowKeuanganLogs(Connection conn, JTable table) {
         table.setModel(new javax.swing.table.DefaultTableModel(

@@ -14,8 +14,23 @@ import service.DBConnectionService;
  * @author auliazhar
  */
 public interface KeuanganRepository {
+
+    /**
+     *
+     * @return
+     */
     public int getSaldo();
+
+    /**
+     *
+     * @param saldoBaru
+     */
     public void setSaldo(int saldoBaru);
+
+    /**
+     *
+     * @param jumlah
+     */
     public static void tambahSaldo(int jumlah) {
         try (Connection conn = DBConnectionService.getConnection();
              PreparedStatement ps = conn.prepareStatement("UPDATE keuangan SET saldo = saldo + ? WHERE id = 1")) {
@@ -26,6 +41,11 @@ public interface KeuanganRepository {
             System.err.println("Failed to add balance: " + e.getMessage());
         }
     }
+
+    /**
+     *
+     * @param jumlah
+     */
     public static void kurangiSaldo(int jumlah) {
         try (Connection conn = DBConnectionService.getConnection();
              PreparedStatement ps = conn.prepareStatement("UPDATE keuangan SET saldo = saldo - ? WHERE id = 1")) {

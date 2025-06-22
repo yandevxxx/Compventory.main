@@ -6,9 +6,17 @@ import java.util.logging.Logger;
 import service.CekRequestServiceImpl;
 import service.DBConnectionService;
 
+/**
+ *
+ * @author Zildjian XTO
+ */
 public class UserCekRequest extends javax.swing.JFrame {
     private String name;
     
+    /**
+     *
+     * @param name
+     */
     public UserCekRequest(String name) {
         initComponents();
         this.name = name;

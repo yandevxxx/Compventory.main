@@ -5,12 +5,28 @@ import java.awt.Color;
 import javax.swing.BorderFactory;
 import service.AudioService;
 
+/**
+ *
+ * @author Zildjian XTO
+ */
 public class LoginPage extends javax.swing.JFrame {
+
+    /**
+     *
+     */
     public String name;
    
+    /**
+     *
+     */
     public LoginPage(){
         initComponents();
     }
+
+    /**
+     *
+     * @param name
+     */
     public LoginPage(String name) {
         this.name = name;
         initComponents();

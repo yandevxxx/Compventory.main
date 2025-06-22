@@ -5,8 +5,17 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import service.DBConnectionService;
 
+/**
+ *
+ * @author Zildjian XTO
+ */
 public class KeuanganRepositoryImpl implements KeuanganRepository{
-@Override
+
+    /**
+     *
+     * @return
+     */
+    @Override
     public int getSaldo() {
         int saldo = 0;
         try (Connection conn = DBConnectionService.getConnection();
@@ -21,6 +30,11 @@ public class KeuanganRepositoryImpl implements KeuanganRepository{
         }
         return saldo;
     }
+
+    /**
+     *
+     * @param saldoBaru
+     */
     @Override
     public void setSaldo(int saldoBaru) {
         try (Connection conn = DBConnectionService.getConnection();

@@ -9,7 +9,18 @@ import javax.swing.JTable;
 import repository.BarangRepositoryImpl;
 import repository.KeuanganRepositoryImpl;
 
+/**
+ *
+ * @author Zildjian XTO
+ */
 public class CekRequestServiceImpl implements CekRequestService{
+
+    /**
+     *
+     * @param conn
+     * @param table
+     * @param adminUsername
+     */
     @Override
     public void approveRequest(Connection conn, JTable table, String adminUsername) {
         int selectedRow = table.getSelectedRow();

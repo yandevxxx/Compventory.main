@@ -2,14 +2,29 @@ package view;
 import repository.AkunRepositoryImpl;
 import service.AudioService;
 
+/**
+ *
+ * @author Zildjian XTO
+ */
 public class AdminDashboard extends javax.swing.JFrame {
     private String name;
+
+    /**
+     *
+     */
     public AkunRepositoryImpl akun = new AkunRepositoryImpl();
     
+    /**
+     *
+     */
     public AdminDashboard(){
         initComponents();
     }
     
+    /**
+     *
+     * @param name
+     */
     public AdminDashboard(String name) {
         this.name = name;
         initComponents();

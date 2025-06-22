@@ -16,19 +16,40 @@ interface Audio {
     }
 }
 
+/**
+ *
+ * @author Zildjian XTO
+ */
 public class AudioService implements Audio {
     private static AudioService currentAudio = null;
     private static boolean isMusicOn = true;
 
+    /**
+     *
+     */
     protected Clip clip;
+
+    /**
+     *
+     */
     protected String path;
 
+    /**
+     *
+     */
     public AudioService() {}
 
+    /**
+     *
+     * @param path
+     */
     public AudioService(String path) {
         this.path = path;
     }
 
+    /**
+     *
+     */
     @Override
     public void playSound() {
         try {
@@ -67,6 +88,9 @@ public class AudioService implements Audio {
         }
     }
 
+    /**
+     *
+     */
     @Override
     public void stopSound() {
         if (clip != null) {
@@ -75,23 +99,42 @@ public class AudioService implements Audio {
         }
     }
 
+    /**
+     *
+     */
     @Override
     public void info() {
         System.out.println("Generic Audio");
     }
 
+    /**
+     *
+     * @return
+     */
     public boolean isPlaying() {
         return clip != null && clip.isRunning();
     }
 
+    /**
+     *
+     * @return
+     */
     public String getPath() {
         return path;
     }
 
+    /**
+     *
+     * @return
+     */
     public Clip getClip() {
         return clip;
     }
 
+    /**
+     *
+     * @param role
+     */
     public static void play(String role) {
         if (!isMusicOn) return;
 
@@ -115,6 +158,9 @@ public class AudioService implements Audio {
         new Thread(currentAudio::playSound).start(); 
     }
 
+    /**
+     *
+     */
     public static void stop() {
         if (currentAudio != null) {
             currentAudio.stopSound();
@@ -122,6 +168,10 @@ public class AudioService implements Audio {
         }
     }
 
+    /**
+     *
+     * @param role
+     */
     public static void toggleMusic(String role) {
         isMusicOn = !isMusicOn;
 
@@ -134,6 +184,10 @@ public class AudioService implements Audio {
         }
     }
 
+    /**
+     *
+     * @return
+     */
     public static boolean isMusicOn() {
         return isMusicOn;
     }

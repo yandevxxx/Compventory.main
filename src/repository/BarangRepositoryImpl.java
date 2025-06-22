@@ -5,8 +5,17 @@ import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import service.DBConnectionService;
 
+/**
+ *
+ * @author Zildjian XTO
+ */
 public class BarangRepositoryImpl implements BarangRepository{
     
+    /**
+     *
+     * @param table
+     * @param conn
+     */
     @Override
     public void showTableListBarang(JTable table, Connection conn) {
         table.setModel(new javax.swing.table.DefaultTableModel(
@@ -49,6 +58,12 @@ public class BarangRepositoryImpl implements BarangRepository{
         }
     }
     
+    /**
+     *
+     * @param parentComponent
+     * @param table
+     * @param username
+     */
     @Override
     public void tambahBarangStock(Component parentComponent, JTable table, String username) {
         int selectedRow = table.getSelectedRow();
@@ -154,6 +169,12 @@ public class BarangRepositoryImpl implements BarangRepository{
         }
     }
      
+    /**
+     *
+     * @param parentComponent
+     * @param table
+     * @param username
+     */
     @Override
     public void KurangiStockBarang(Component parentComponent, JTable table, String username) {
         int selectedRow = table.getSelectedRow();
@@ -258,6 +279,11 @@ public class BarangRepositoryImpl implements BarangRepository{
         }
     }
     
+    /**
+     *
+     * @param parentComponent
+     * @param table
+     */
     @Override
     public void tambahBarangBaru(Component parentComponent, JTable table) {
         String nama = JOptionPane.showInputDialog(parentComponent, "Input item name:");
@@ -350,6 +376,13 @@ public class BarangRepositoryImpl implements BarangRepository{
         }
     }
     
+    /**
+     *
+     * @param table
+     * @param parentComponent
+     * @param button
+     * @param button2
+     */
     @Override
     public void lihatRiwayatBarang(JTable table, Component parentComponent, JButton button, JButton button2) {
         int selectedRow = table.getSelectedRow();
@@ -433,6 +466,12 @@ public class BarangRepositoryImpl implements BarangRepository{
         }
     }
     
+    /**
+     *
+     * @param table
+     * @param conn
+     * @param username
+     */
     @Override
     public void userBeliBarang(JTable table, Connection conn, String username) {
         int selectedRow = table.getSelectedRow();
@@ -528,6 +567,14 @@ public class BarangRepositoryImpl implements BarangRepository{
         }
     }
     
+    /**
+     *
+     * @param jenis
+     * @param jumlah
+     * @param keterangan
+     * @param username
+     * @param status
+     */
     @Override
     public void catatTransaksiKeuangan(String jenis, int jumlah, String keterangan, String username, int status) {
         String sql = "INSERT INTO transaksi_keuangan (jenis, jumlah, keterangan, username) VALUES (?, ?, ?, ?)";

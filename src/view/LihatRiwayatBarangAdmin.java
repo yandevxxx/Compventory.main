@@ -5,12 +5,25 @@ import javax.swing.JOptionPane;
 import java.sql.SQLException;
 import service.DBConnectionService;
 
+/**
+ *
+ * @author Zildjian XTO
+ */
 public class LihatRiwayatBarangAdmin extends javax.swing.JFrame {
 
     private String name;
+
+    /**
+     *
+     */
     public LihatRiwayatBarangAdmin(){
         initComponents();
     }
+
+    /**
+     *
+     * @param name
+     */
     public LihatRiwayatBarangAdmin(String name) {
         try {
             Connection conn = DBConnectionService.getConnection();

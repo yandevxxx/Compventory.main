@@ -8,15 +8,26 @@ import repository.KeuanganRepositoryImpl;
 import service.DBConnectionService;
 import service.KeuanganServiceImpl;
 
+/**
+ *
+ * @author Zildjian XTO
+ */
 public class AdminCekKeuangan extends javax.swing.JFrame {
     private String name;
     KeuanganRepositoryImpl keuanganRepo = new KeuanganRepositoryImpl(); 
     KeuanganServiceImpl KeuanganService = new KeuanganServiceImpl();
     
+    /**
+     *
+     */
     public AdminCekKeuangan(){
         initComponents();
     }
     
+    /**
+     *
+     * @param name
+     */
     public AdminCekKeuangan(String name) {
         initComponents();
         this.name = name;

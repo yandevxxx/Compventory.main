@@ -11,13 +11,24 @@ import java.util.logging.Logger;
 import service.DBConnectionService;
 import service.CekRequestServiceImpl;
 
-
+/**
+ *
+ * @author Zildjian XTO
+ */
 public class AdminCekRequest extends javax.swing.JFrame {
     private String name;
     
+    /**
+     *
+     */
     public AdminCekRequest(){
         initComponents();
     }
+
+    /**
+     *
+     * @param name
+     */
     public AdminCekRequest(String name) {
         initComponents();
         this.name = name;
@@ -30,6 +41,11 @@ public class AdminCekRequest extends javax.swing.JFrame {
         }
     }
 
+    /**
+     *
+     * @param conn
+     * @param table
+     */
     public void ShowRequestUser(Connection conn, JTable table) {
         table.setModel(new javax.swing.table.DefaultTableModel(
             new Object[][]{},

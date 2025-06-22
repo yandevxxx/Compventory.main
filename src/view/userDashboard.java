@@ -6,9 +6,17 @@ import javax.swing.JOptionPane;
 import service.AudioService;
 import service.DBConnectionService;
 
+/**
+ *
+ * @author Zildjian XTO
+ */
 public class userDashboard extends javax.swing.JFrame {
     private final String NAME;
     
+    /**
+     *
+     * @param name
+     */
     public userDashboard(String name) {
         this.NAME = name;
         initComponents();
@@ -352,73 +360,70 @@ public class userDashboard extends javax.swing.JFrame {
     }//GEN-LAST:event_checkMemberBtn1ActionPerformed
 
     private void requestBarang(Connection con) {
-    String currentUsername = NAME;
+        String currentUsername = NAME;
 
-    try {
-        String namaBarang = JOptionPane.showInputDialog(this, "Input item name:");
-        if (namaBarang == null) {
-            return;
-        }
-        namaBarang = namaBarang.trim();
-        if (namaBarang.isEmpty()) {
-            JOptionPane.showMessageDialog(this, "Item name can't be empty!", "Error", JOptionPane.ERROR_MESSAGE);
-            return;
-        }
-
-        String jumlahStr = JOptionPane.showInputDialog(this, "Enter the amount:");
-        if (jumlahStr == null) {
-            return;
-        }
-        jumlahStr = jumlahStr.trim();
-        if (jumlahStr.isEmpty()) {
-            JOptionPane.showMessageDialog(this, "Amount can't be empty!", "Error", JOptionPane.ERROR_MESSAGE);
-            return;
-        }
-
-        int jumlah;
         try {
-            jumlah = Integer.parseInt(jumlahStr);
-            if (jumlah <= 0) {
-                JOptionPane.showMessageDialog(this, "Amount must be more than 0!", "Error", JOptionPane.ERROR_MESSAGE);
+            String namaBarang = JOptionPane.showInputDialog(this, "Input item name:");
+            if (namaBarang == null) {
                 return;
             }
-        } catch (NumberFormatException e) {
-            JOptionPane.showMessageDialog(this, "Amount must be a number!", "Error", JOptionPane.ERROR_MESSAGE);
-            return;
-        }
+            namaBarang = namaBarang.trim();
+            if (namaBarang.isEmpty()) {
+                JOptionPane.showMessageDialog(this, "Item name can't be empty!", "Error", JOptionPane.ERROR_MESSAGE);
+                return;
+            }
 
-        String cekBarangSql = "SELECT * FROM barang WHERE nama = ?";
-        try (PreparedStatement cekPst = con.prepareStatement(cekBarangSql)) {
-            cekPst.setString(1, namaBarang);
+            String jumlahStr = JOptionPane.showInputDialog(this, "Enter the amount:");
+            if (jumlahStr == null) {
+                return;
+            }
+            jumlahStr = jumlahStr.trim();
+            if (jumlahStr.isEmpty()) {
+                JOptionPane.showMessageDialog(this, "Amount can't be empty!", "Error", JOptionPane.ERROR_MESSAGE);
+                return;
+            }
 
-            try (ResultSet rs = cekPst.executeQuery()) {
-                if (rs.next()) {
-                    JOptionPane.showMessageDialog(this, "This item already exists in the system stock.", "Info", JOptionPane.INFORMATION_MESSAGE);
+            int jumlah;
+            try {
+                jumlah = Integer.parseInt(jumlahStr);
+                if (jumlah <= 0) {
+                    JOptionPane.showMessageDialog(this, "Amount must be more than 0!", "Error", JOptionPane.ERROR_MESSAGE);
                     return;
                 }
+            } catch (NumberFormatException e) {
+                JOptionPane.showMessageDialog(this, "Amount must be a number!", "Error", JOptionPane.ERROR_MESSAGE);
+                return;
             }
-        }
 
-        String sql = "INSERT INTO request_barang(username, nama_barang, jumlah) VALUES (?, ?, ?)";
-        try (PreparedStatement pst = con.prepareStatement(sql)) {
-            pst.setString(1, currentUsername);
-            pst.setString(2, namaBarang);
-            pst.setInt(3, jumlah);
+            String cekBarangSql = "SELECT * FROM barang WHERE nama = ?";
+            try (PreparedStatement cekPst = con.prepareStatement(cekBarangSql)) {
+                cekPst.setString(1, namaBarang);
 
-            int inserted = pst.executeUpdate();
-            if (inserted > 0) {
-                JOptionPane.showMessageDialog(this, "Item request successfully sent!");
-            } else {
-                JOptionPane.showMessageDialog(this, "Failed to sent item request!", "Error", JOptionPane.ERROR_MESSAGE);
+                try (ResultSet rs = cekPst.executeQuery()) {
+                    if (rs.next()) {
+                        JOptionPane.showMessageDialog(this, "This item already exists in the system stock.", "Info", JOptionPane.INFORMATION_MESSAGE);
+                        return;
+                    }
+                }
             }
+
+            String sql = "INSERT INTO request_barang(username, nama_barang, jumlah) VALUES (?, ?, ?)";
+            try (PreparedStatement pst = con.prepareStatement(sql)) {
+                pst.setString(1, currentUsername);
+                pst.setString(2, namaBarang);
+                pst.setInt(3, jumlah);
+
+                int inserted = pst.executeUpdate();
+                if (inserted > 0) {
+                    JOptionPane.showMessageDialog(this, "Item request successfully sent!");
+                } else {
+                    JOptionPane.showMessageDialog(this, "Failed to sent item request!", "Error", JOptionPane.ERROR_MESSAGE);
+                }
+            }
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(this, "Error database: " + ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
         }
-    } catch (SQLException ex) {
-        JOptionPane.showMessageDialog(this, "Error database: " + ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
     }
-}
-
-    
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton beliBarang;
     private javax.swing.JButton checkMemberBtn;

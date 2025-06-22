@@ -8,9 +8,26 @@ import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
+/**
+ *
+ * @author Zildjian XTO
+ */
 public interface CekRequestService {
+
+    /**
+     *
+     * @param conn
+     * @param table
+     * @param adminUsername
+     */
     public void approveRequest(Connection conn, JTable table, String adminUsername);
     
+    /**
+     *
+     * @param conn
+     * @param table
+     * @param username
+     */
     public default void ShowRequestUser(Connection conn, JTable table, String username) {
         table.setModel(new javax.swing.table.DefaultTableModel(
             new Object[][]{},

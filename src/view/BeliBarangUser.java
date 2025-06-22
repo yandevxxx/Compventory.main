@@ -7,10 +7,18 @@ import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+/**
+ *
+ * @author Zildjian XTO
+ */
 public class BeliBarangUser extends javax.swing.JFrame {
     
     private String name;
     
+    /**
+     *
+     * @param name
+     */
     public BeliBarangUser(String name) {
         this.name = name;
         initComponents();

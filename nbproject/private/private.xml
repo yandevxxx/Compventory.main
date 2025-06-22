@@ -3,10 +3,13 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+            <file>file:/C:/Users/Zildjian%20XTO/Documents/Compventory-main/src/view/LihatRiwayatBarangAdmin.java</file>
+            <file>file:/C:/Users/Zildjian%20XTO/Documents/Compventory-main/src/view/LoginPage.java</file>
             <file>file:/C:/Users/Zildjian%20XTO/Documents/Compventory-main/src/view/RegisterPage.java</file>
-            <file>file:/C:/Users/Zildjian%20XTO/Documents/Compventory-main/src/repository/AkunRepositoryImpl.java</file>
-            <file>file:/C:/Users/Zildjian%20XTO/Documents/Compventory-main/src/repository/AkunRepository.java</file>
-            <file>file:/C:/Users/Zildjian%20XTO/Documents/Compventory-main/src/view/AdminCheckingMember.java</file>
+            <file>file:/C:/Users/Zildjian%20XTO/Documents/Compventory-main/src/view/UserCekRequest.java</file>
+            <file>file:/C:/Users/Zildjian%20XTO/Documents/Compventory-main/src/view/userDashboard.java</file>
+            <file>file:/C:/Users/Zildjian%20XTO/Documents/Compventory-main/src/repository/BarangRepository.java</file>
+            <file>file:/C:/Users/Zildjian%20XTO/Documents/Compventory-main/src/repository/BarangRepositoryImpl.java</file>
         </group>
     </open-files>
 </project-private>

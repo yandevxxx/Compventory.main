@@ -4,8 +4,15 @@ import javax.swing.BorderFactory;
 import javax.swing.JOptionPane;
 import java.awt.Color;
 
+/**
+ *
+ * @author Zildjian XTO
+ */
 public class RegisterPage extends javax.swing.JFrame {
 
+    /**
+     *
+     */
     public RegisterPage() {
         initComponents();
     }

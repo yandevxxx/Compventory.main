@@ -8,10 +8,18 @@ import java.sql.Connection;
 import java.sql.SQLException;
 import service.DBConnectionService;
 
+/**
+ *
+ * @author Zildjian XTO
+ */
 public class AdminCheckingMember extends javax.swing.JFrame {
 
     private String name;
     
+    /**
+     *
+     * @param name
+     */
     public AdminCheckingMember(String name) {
         initComponents();
         try (Connection conn = DBConnectionService.getConnection()) {
@@ -182,6 +190,10 @@ public class AdminCheckingMember extends javax.swing.JFrame {
         deleteBtn.setForeground(java.awt.Color.black);
     }//GEN-LAST:event_deleteBtnMouseExited
 
+    /**
+     *
+     * @param conn
+     */
     public void showTableListMember(Connection conn) {
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object[][]{},

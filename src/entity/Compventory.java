@@ -4,7 +4,6 @@ import view.LoginPage;
 import java.sql.Connection;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
-
 /**
  *
  * @author Azhar Aulia Priatna
@@ -12,6 +11,11 @@ import javax.swing.JOptionPane;
  * @author Aditya Wijaya Putra
  */
 public class Compventory {
+
+    /**
+     *
+     * @param args
+     */
     public static void main(String[] args) {
         try {
             Connection conn = DBConnectionService.getConnection();

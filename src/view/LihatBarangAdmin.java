@@ -5,11 +5,24 @@ import java.sql.Connection;
 import javax.swing.JOptionPane;
 import java.sql.SQLException;
 
+/**
+ *
+ * @author Zildjian XTO
+ */
 public class LihatBarangAdmin extends javax.swing.JFrame {
     private String name;
+
+    /**
+     *
+     */
     public LihatBarangAdmin(){
         initComponents();
     }
+
+    /**
+     *
+     * @param name
+     */
     public LihatBarangAdmin(String name) {
         
         initComponents();
