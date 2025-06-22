@@ -184,8 +184,8 @@ public class AdminCheckingMember extends javax.swing.JFrame {
 
     public void showTableListMember(Connection conn) {
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
-            new Object[][] {},
-            new String[]{"Username", "Role", "Register Date"}
+            new Object[][]{},
+            new String[]{"Username", "Role", "Gender", "Register Date"}
         ) {
             @Override
             public boolean isCellEditable(int row, int column) {
@@ -202,20 +202,23 @@ public class AdminCheckingMember extends javax.swing.JFrame {
         jTable1.setColumnSelectionAllowed(false);
         jTable1.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
 
-        String sql = "SELECT username, role, Tanggal_Register FROM akun";
+        String sql = "SELECT username, role, gender, Tanggal_Register FROM akun";
 
         try (PreparedStatement pstmt = conn.prepareStatement(sql);
              ResultSet rs = pstmt.executeQuery()) {
             while (rs.next()) {
                 String username = rs.getString("username");
                 String role = rs.getString("role");
+                String gender = rs.getString("gender");
                 java.sql.Timestamp registerDate = rs.getTimestamp("Tanggal_Register");
-                tb.addRow(new Object[]{username, role, registerDate});
+
+                tb.addRow(new Object[]{username, role, gender, registerDate});
             }
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, "Failed To Get Data Member: " + e.getMessage());
         }
     }
+
 
     private void updateSelectedUser() {
         int selectedRow = jTable1.getSelectedRow();
