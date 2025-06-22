@@ -209,10 +209,17 @@ public class AdminCheckingMember extends javax.swing.JFrame {
             while (rs.next()) {
                 String username = rs.getString("username");
                 String role = rs.getString("role");
-                String gender = rs.getString("gender");
-                java.sql.Timestamp registerDate = rs.getTimestamp("Tanggal_Register");
+                String genderDb = rs.getString("gender");
 
-                tb.addRow(new Object[]{username, role, gender, registerDate});
+                String genderDisplay = "Unknown";
+                if ("l".equalsIgnoreCase(genderDb)) {
+                    genderDisplay = "Laki-laki";
+                } else if ("p".equalsIgnoreCase(genderDb)) {
+                    genderDisplay = "Perempuan";
+                }
+
+                java.sql.Timestamp registerDate = rs.getTimestamp("Tanggal_Register");
+                tb.addRow(new Object[]{username, role, genderDisplay, registerDate});
             }
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, "Failed To Get Data Member: " + e.getMessage());
